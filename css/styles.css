@@ -1,0 +1,56 @@
+
+h1 {
+    color: red;
+    text-align: center;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 100px;
+
+}
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+nav {
+    font-size: 30px;
+}
+
+#calls {
+    font-size: 30px;
+}
+
+header {
+margin: 0 auto;
+}
+
+
+image {
+padding: 100px;
+background-size: contain;
+background-repeat: no-repeat;
+}
+
+.animal {
+    length: 300px;
+    width: 300px;
+}
+
+#animal0 {
+    length: 500px;
+    width: 500px;
+    padding: 0px;
+}
+
+#animal1 {
+    length: 500px;
+    width: 500px;
+}
+
+#animal2 {
+
+}
+
+#animal3 {
+
+}
