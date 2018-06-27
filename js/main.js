@@ -20,10 +20,16 @@ var animals = [
         // sound : "cackle.aif"
         sound: "https://freesound.org/data/previews/120/120585_8043-lq.mp3"
     },
+    {
+    name: 'goat',
+    sound: "https://i.imgur.com/249lpHz.png"
+    },
+    name: 'cat'
+    sound: "https://freesound.org/data/previews/333/333916_4930786-lq.mp3"
 ];
 
 const DURATION = 2000;
-const GAP = 100;
+const GAP = 1000;
 
 var animalPlayer = new Audio();
 
@@ -77,13 +83,19 @@ function getRandomBetween(min, max) {
 
 function handleAnimalClick(evt) {
     if (isPlaying) return;
+
+    //set so guess won't complete after first click
+    // if () {
+
+    // }
     var animalIdx = parseInt(evt.target.id.replace('animal', ''));
     animalPlayer.src = animals[animalIdx].sound;
     animalPlayer.play();
     guess.push(animalIdx);
-    debugger;
+  
+    if (guess.length === sequence.length) {
     lose = guess[guess.length - 1] !== sequence[guess.length - 1];
-    isPlaying = lose;
+    isPlaying = lose; //why?
     if (!lose) {
         sequence.push(getRandomBetween(0, animals.length - 1));
         playSequence(function() {
@@ -91,7 +103,9 @@ function handleAnimalClick(evt) {
             isPlaying = false;
         });
     }
+}
     render();
+
 }
 
 function initialize() {

@@ -35,6 +35,9 @@ background-repeat: no-repeat;
     length: 300px;
     width: 300px;
 }
+.animal:hover {
+    cursor: pointer;
+}
 
 #animal0 {
     length: 500px;
