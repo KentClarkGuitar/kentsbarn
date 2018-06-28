@@ -1,7 +1,8 @@
 
-h1 {
+h1  {
     color: red;
     text-align: center;
+    /* font-family: 'Ranchers', cursive; */
     font-family: 'IM Fell English SC', serif;
     font-size: 100px;
 
@@ -10,6 +11,26 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 
+}
+.wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px dotted lightblue;
+    text-align: center;
+    width: 1000px;
+    float: none;
+    background-color:skyblue transparent ;
+    
+}
+div {
+    font-family: 'IM Fell English SC', serif;   
+    margin: left; 
+    text-align: center;
+ 
+}
+
+p {
+    text-align: center;    
 }
 
 nav {
@@ -40,13 +61,13 @@ background-repeat: no-repeat;
 }
 
 #animal0 {
-    length: 500px;
+
     width: 500px;
     padding: 0px;
 }
 
 #animal1 {
-    length: 500px;
+
     width: 500px;
 }
 
@@ -55,9 +76,19 @@ background-repeat: no-repeat;
 }
 
 #animal3 {
-
+    height: 200px;
+    width: 200px;
+}
+#animal4 {
+    height: 200px;
+    width: 200px;
 }
 
-.clickedAnimal {
-    
+#bunny {
+    height: 100px;
+    width: 100px;
+}
+
+.timeout {
+    font-size: 30px;
 }

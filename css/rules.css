@@ -1,0 +1,64 @@
+
+li {
+    font-family: 'Ranchers', cursive;
+    font-size: 20px;
+    display: flex;
+    
+}
+
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+nav {
+    font-size: 30px;
+}
+
+#calls {
+    font-size: 30px;
+}
+
+header {
+margin: 0 auto;
+}
+
+
+image {
+padding: 100px;
+background-size: contain;
+background-repeat: no-repeat;
+}
+
+.animal {
+    length: 300px;
+    width: 300px;
+}
+.animal:hover {
+    cursor: pointer;
+}
+
+#animal0 {
+
+    width: 500px;
+    padding: 0px;
+}
+
+#animal1 {
+
+    width: 500px;
+}
+
+#animal2 {
+
+}
+
+#animal3 {
+    height: 200px;
+    width: 200px;
+}
+#animal4 {
+    height: 200px;
+    width: 200px;
+}

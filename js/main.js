@@ -1,3 +1,5 @@
+
+//Who spoke?
 // /*----- constants -----*/
 var animals = [
     {
@@ -21,16 +23,42 @@ var animals = [
         sound: "https://freesound.org/data/previews/120/120585_8043-lq.mp3"
     },
     {
-    name: 'goat',
-    sound: "https://i.imgur.com/249lpHz.png"
+        name: 'goat',
+        sound: "https://freesound.org/data/previews/385/385913_7097737-lq.mp3"
     },
-    name: 'cat'
-    sound: "https://freesound.org/data/previews/333/333916_4930786-lq.mp3"
+    {
+        name: 'pig',
+        sound: 'sounds/squeal3.mp3'
+    },
+    // {
+    //     name: 'duck',
+    //     sound: "https://freesound.org/data/previews/419/419094_2667695-lq.mp3"
+    // },
+    // {
+    //     name: 'frog',
+    //     sound: "https://freesound.org/data/previews/326/326648_5642065-lq.mp3"
+    // }
+
+
 ];
+var bgMusic = new Audio("sounds/LittleRedRooster.mp3");
 
-const DURATION = 2000;
-const GAP = 1000;
+$('input:checkbox').change(function () {
+    if ($(this).is(':checked')) {
 
+        bgMusic.volume = 0.10;
+        bgMusic.play();
+    } else {
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+    }
+});
+
+const DURATION = 1200;
+const GAP = 300;
+var count;
+var timerId;
+// var bgMusic;
 var animalPlayer = new Audio();
 
 /*----- cached elements -----*/
@@ -47,14 +75,21 @@ $('.animal').on('click', handleAnimalClick);
 
 /*----- functions -----*/
 function playGame() {
+    // var playNote = new Audio("https://www.freesound.org/data/previews/101/101137_1386366-lq.mp3");
+    // playNote.play();
+
+
+    $('button').attr('disabled', true);
     lose = false;
-    
-    //pick random number 
+    count = 30;
+    timerId = setInterval(timer, 1000);
+
     sequence = [getRandomBetween(0, animals.length - 1)];
     playSequence(function () {
         guess = [];
         isPlaying = false;
     });
+
 }
 
 function playSequence(doneCallback) {
@@ -83,27 +118,24 @@ function getRandomBetween(min, max) {
 
 function handleAnimalClick(evt) {
     if (isPlaying) return;
-
-    //set so guess won't complete after first click
-    // if () {
-
-    // }
+    count = 31;
     var animalIdx = parseInt(evt.target.id.replace('animal', ''));
-    animalPlayer.src = animals[animalIdx].sound;
-    animalPlayer.play();
+
+    // animalPlayer.src = animals[animalIdx].sound;
+    // animalPlayer.play();
     guess.push(animalIdx);
-  
+
     if (guess.length === sequence.length) {
-    lose = guess[guess.length - 1] !== sequence[guess.length - 1];
-    isPlaying = lose; //why?
-    if (!lose) {
-        sequence.push(getRandomBetween(0, animals.length - 1));
-        playSequence(function() {
-            guess = [];
-            isPlaying = false;
-        });
+        lose = guess[guess.length - 1] !== sequence[guess.length - 1];
+        isPlaying = lose;
+        if (!lose) {
+            sequence.push(getRandomBetween(0, animals.length - 1));
+            playSequence(function () {
+                guess = [];
+                isPlaying = false;
+            });
+        }
     }
-}
     render();
 
 }
@@ -111,20 +143,36 @@ function handleAnimalClick(evt) {
 function initialize() {
     isPlaying = true;
     sequence = [];
+
     render();
+
 }
 
 function render() {
     sequenceCountEl.textContent = sequence.length;
     if (lose) {
-        messageEl.textContent = 'Bummer - try again!';
+        messageEl.textContent = 'Speak again animals!';
     } else if (sequence.length) {
-        messageEl.textContent = 'Keep it going!';
+        messageEl.textContent = 'Who spoke when?';
     } else {
-        messageEl.textContent = 'Click Begin Button to Start';
+        messageEl.textContent = 'Click button to begin!';
+        $('button').attr('disabled', false)
     }
 }
 
+function timer() {
+
+    count--;
+    document.querySelector('.timeout').innerHTML = 'Play Time: ' + count + " seconds";
+
+    if (count < 0) {
+        clearInterval(timerId);
+        document.querySelector('.timeout').innerHTML = "";
+        document.getElementById('message').innerHTML = "Time's Up! " + sequence.length;
+        $('button').attr('disabled', false)
+
+    }
+}
 initialize();
 
 
