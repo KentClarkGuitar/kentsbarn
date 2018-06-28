@@ -1,15 +1,38 @@
 
-li {
-    font-family: 'Ranchers', cursive;
-    font-size: 20px;
-    display: flex;
-    
+html, body {
+    height: 100%;
 }
 
+h1  {
+    color: red;
+    text-align: center;
+    /* font-family: 'Ranchers', cursive; */
+    font-family: 'IM Fell English SC', serif;
+    font-size: 100px;
+
+}
 body {
     background-repeat: no-repeat;
     background-size: cover;
+}
 
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+    background-color:skyblue transparent ;
+}
+
+div {
+    font-family: 'IM Fell English SC', serif;   
+    margin: left; 
+    text-align: center;
+}
+
+p {
+    text-align: center;    
+    font-family: 'IM Fell English SC', serif;
+    font-size: 20px;    
+    text-align: center;
 }
 
 nav {
@@ -21,44 +44,93 @@ nav {
 }
 
 header {
-margin: 0 auto;
-}
-
-
-image {
-padding: 100px;
-background-size: contain;
-background-repeat: no-repeat;
+    margin: 0 auto;
 }
 
 .animal {
-    length: 300px;
-    width: 300px;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
+
 .animal:hover {
     cursor: pointer;
 }
 
-#animal0 {
-
-    width: 500px;
-    padding: 0px;
+.timeout {
+    font-size: 30px;
 }
 
-#animal1 {
+.spin {
+    transform: rotateY(360deg);
+}
 
-    width: 500px;
+span, button, a {
+    padding: 10px;
+}
+#message {
+    font-size: 30px;
+
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 150px;
+}
+
+#game-controls {
+    width: 300px;
+    margin-top: 30px;
+    margin-left: 250px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0.6;
+    background-color: black;
+    color: white;
+}
+
+.timeout span {
+    display: inline-block;
+    width: 200px;
+}
+
+.wrapper {
+    color: #936E67;
+}
+
+a {
+    font-size: 20px;
+}
+#animal0 {
+
+height: 230px;
+padding: 0px;
+}
+#animal1 {
+    height: 130px;
 }
 
 #animal2 {
+    height: 150px;
 
+    
 }
 
 #animal3 {
-    height: 200px;
-    width: 200px;
+    height: 150px;
+
 }
 #animal4 {
-    height: 200px;
-    width: 200px;
+    height: 100px;
 }

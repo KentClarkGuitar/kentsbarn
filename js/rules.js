@@ -8,6 +8,11 @@ var animals = [
         sound: "https://freesound.org/data/previews/19/19812_37876-lq.mp3"
     },
     {
+        name: 'chicken',
+        // sound : "cackle.aif"
+        sound: "https://freesound.org/data/previews/120/120585_8043-lq.mp3"
+    },
+    {
         name: 'cow',
         // sound : "moo.aif"
         sound: "https://freesound.org/data/previews/58/58277_634166-lq.mp3"
@@ -18,15 +23,10 @@ var animals = [
         sound: "https://freesound.org/data/previews/34/34538_118241-lq.mp3"
     },
     {
-        name: 'chicken',
-        // sound : "cackle.aif"
-        sound: "https://freesound.org/data/previews/120/120585_8043-lq.mp3"
-    },
-
-    {
         name: 'pig',
         sound: 'sounds/squeal3.mp3 '//"/media_command.php?media=s0dQIkPecgL4&amp;command=download_mp3"
-    }
+    },
+  
 ];
 
 

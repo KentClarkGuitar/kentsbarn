@@ -1,4 +1,8 @@
 
+html, body {
+    height: 100%;
+}
+
 h1  {
     color: red;
     text-align: center;
@@ -10,27 +14,25 @@ h1  {
 body {
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-around;
 
 }
-.wrapper {
-    margin-left: auto;
-    margin-right: auto;
-    border: 2px dotted lightblue;
-    text-align: center;
-    width: 1000px;
-    float: none;
-    background-color:skyblue transparent ;
-    
-}
+
 div {
     font-family: 'IM Fell English SC', serif;   
     margin: left; 
     text-align: center;
- 
 }
 
 p {
     text-align: center;    
+    font-family: 'IM Fell English SC', serif;
+    font-size: 20px;    
+    text-align: center;
 }
 
 nav {
@@ -42,53 +44,137 @@ nav {
 }
 
 header {
-margin: 0 auto;
-}
-
-
-image {
-padding: 100px;
-background-size: contain;
-background-repeat: no-repeat;
+    margin: 0 auto;
 }
 
 .animal {
-    length: 300px;
-    width: 300px;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
+
 .animal:hover {
     cursor: pointer;
 }
 
-#animal0 {
-
-    width: 500px;
-    padding: 0px;
+.timeout {
+    font-size: 30px;
 }
 
-#animal1 {
+.spin {
+    transform: rotateY(360deg);
+}
 
-    width: 500px;
+span, button, a {
+    padding: 10px;
+}
+#message {
+    font-size: 30px;
+
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 150px;
+}
+
+#game-controls {
+    width: 300px;
+    margin-top: 30px;
+    margin-left: 250px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0.6;
+    background-color: black;
+    color: white;
+}
+
+.timeout span {
+    display: inline-block;
+    width: 200px;
+}
+
+.wrapper {
+    color: #936E67;
+}
+
+a {
+    font-size: 20px;
+}
+#animal0 {
+margin-top:-250px;
+height: 230px;
+padding: 0px;
+}
+#animal1 {
+    height: 130px;
 }
 
 #animal2 {
-
+    height: 150px;
+margin-top: -350px;
+    
 }
 
 #animal3 {
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    margin-top: -200px;
 }
 #animal4 {
-    height: 200px;
-    width: 200px;
-}
-
-#bunny {
     height: 100px;
-    width: 100px;
+    margin-top: 100px;
 }
 
-.timeout {
-    font-size: 30px;
+
+.animal.active {
+    -webkit-animation-name: cycle;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+    animation-name: cycle;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    -moz-animation-name: cycle;
+    -moz-animation-duration: 1s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes cycle {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes cycle {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes cycle {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+    to {
+        -moz-transform: rotate(360deg);
+    }
 }

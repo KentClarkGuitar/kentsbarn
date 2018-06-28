@@ -1,11 +1,14 @@
-
-//Who spoke?
 // /*----- constants -----*/
 var animals = [
     {
         name: 'horse',
         // sound : "neigh.aif"
         sound: "https://freesound.org/data/previews/19/19812_37876-lq.mp3"
+    },
+    {
+        name: 'chicken',
+        // sound : "cackle.aif"
+        sound: "https://freesound.org/data/previews/120/120585_8043-lq.mp3"
     },
     {
         name: 'cow',
@@ -18,35 +21,18 @@ var animals = [
         sound: "https://freesound.org/data/previews/34/34538_118241-lq.mp3"
     },
     {
-        name: 'chicken',
-        // sound : "cackle.aif"
-        sound: "https://freesound.org/data/previews/120/120585_8043-lq.mp3"
-    },
-    {
-        name: 'goat',
-        sound: "https://freesound.org/data/previews/385/385913_7097737-lq.mp3"
-    },
-    {
         name: 'pig',
-        sound: 'sounds/squeal3.mp3'
-    },
-    // {
-    //     name: 'duck',
-    //     sound: "https://freesound.org/data/previews/419/419094_2667695-lq.mp3"
-    // },
-    // {
-    //     name: 'frog',
-    //     sound: "https://freesound.org/data/previews/326/326648_5642065-lq.mp3"
-    // }
-
-
+        sound: 'sounds/squeal3.mp3 '//"/media_command.php?media=s0dQIkPecgL4&amp;command=download_mp3"
+    }
+    
+   
 ];
 var bgMusic = new Audio("sounds/LittleRedRooster.mp3");
 
 $('input:checkbox').change(function () {
     if ($(this).is(':checked')) {
 
-        bgMusic.volume = 0.10;
+        bgMusic.volume = 0.15;
         bgMusic.play();
     } else {
         bgMusic.pause();
@@ -54,11 +40,10 @@ $('input:checkbox').change(function () {
     }
 });
 
-const DURATION = 1200;
+const DURATION = 1500;
 const GAP = 300;
 var count;
 var timerId;
-// var bgMusic;
 var animalPlayer = new Audio();
 
 /*----- cached elements -----*/
@@ -75,9 +60,6 @@ $('.animal').on('click', handleAnimalClick);
 
 /*----- functions -----*/
 function playGame() {
-    // var playNote = new Audio("https://www.freesound.org/data/previews/101/101137_1386366-lq.mp3");
-    // playNote.play();
-
 
     $('button').attr('disabled', true);
     lose = false;
@@ -89,7 +71,6 @@ function playGame() {
         guess = [];
         isPlaying = false;
     });
-
 }
 
 function playSequence(doneCallback) {
@@ -119,10 +100,12 @@ function getRandomBetween(min, max) {
 function handleAnimalClick(evt) {
     if (isPlaying) return;
     count = 31;
-    var animalIdx = parseInt(evt.target.id.replace('animal', ''));
-
-    // animalPlayer.src = animals[animalIdx].sound;
-    // animalPlayer.play();
+    var elemId = evt.target.id;
+    var animalIdx = parseInt(elemId.replace('animal', ''));
+    var elem = document.getElementById(elemId);
+    document.getElementById(elemId).className += ' active';
+    // elem.classList.add('active');
+    // elem.classList.remove('active');
     guess.push(animalIdx);
 
     if (guess.length === sequence.length) {
@@ -136,6 +119,11 @@ function handleAnimalClick(evt) {
             });
         }
     }
+   
+    setTimeout(function() {
+        document.getElementById(elemId).classList.remove('active');
+    }, 1000)
+    
     render();
 
 }
@@ -143,9 +131,7 @@ function handleAnimalClick(evt) {
 function initialize() {
     isPlaying = true;
     sequence = [];
-
     render();
-
 }
 
 function render() {
@@ -161,13 +147,13 @@ function render() {
 }
 
 function timer() {
-
+    if (isPlaying) return;
     count--;
-    document.querySelector('.timeout').innerHTML = 'Play Time: ' + count + " seconds";
+    document.querySelector('.timeout span').innerHTML = count + " seconds";
 
     if (count < 0) {
         clearInterval(timerId);
-        document.querySelector('.timeout').innerHTML = "";
+        document.querySelector('.timeout span').innerHTML = "";
         document.getElementById('message').innerHTML = "Time's Up! " + sequence.length;
         $('button').attr('disabled', false)
 
