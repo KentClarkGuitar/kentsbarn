@@ -29,6 +29,14 @@ Imgur was used and freesound.org to host images and sounds respectively.
 
 Be a farmer and click [here](https://kentclarkguitar.github.io/kentsbarn/) to play with the animals.
 
+ Howdy, Welcome to Kent's Barn! Like Simon, an audio memory game using animal calls.
+
+Starting with a sequence of 1, click on the animals in the order of their calls. Try until you fail!
+
+You're alotted 30 seconds per click. If you run outta time, yer done!
+
+Test the animals below. When you feel confident, hit Back and Begin Game on the previous page.
+
 
 ## Next Steps
 
