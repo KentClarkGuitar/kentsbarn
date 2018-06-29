@@ -24,8 +24,8 @@ var animals = [
         name: 'pig',
         sound: 'sounds/squeal3.mp3 '//"/media_command.php?media=s0dQIkPecgL4&amp;command=download_mp3"
     }
-    
-   
+
+
 ];
 var bgMusic = new Audio("sounds/LittleRedRooster.mp3");
 
@@ -49,6 +49,7 @@ var animalPlayer = new Audio();
 /*----- cached elements -----*/
 var sequenceCountEl = document.getElementById('sequence-count');
 var messageEl = document.getElementById('message');
+var playBtn = document.querySelector('button');
 
 /*----- app's state (variables) -----*/
 var sequence, guess, lose;
@@ -61,7 +62,6 @@ $('.animal').on('click', handleAnimalClick);
 /*----- functions -----*/
 function playGame() {
 
-    $('button').attr('disabled', true);
     lose = false;
     count = 30;
     timerId = setInterval(timer, 1000);
@@ -71,6 +71,7 @@ function playGame() {
         guess = [];
         isPlaying = false;
     });
+    render();
 }
 
 function playSequence(doneCallback) {
@@ -100,32 +101,24 @@ function getRandomBetween(min, max) {
 function handleAnimalClick(evt) {
     if (isPlaying) return;
     count = 31;
-    var elemId = evt.target.id;
-    var animalIdx = parseInt(elemId.replace('animal', ''));
-    var elem = document.getElementById(elemId);
-    document.getElementById(elemId).className += ' active';
-    // elem.classList.add('active');
-    // elem.classList.remove('active');
+    var elem = event.target;
+    var animalIdx = parseInt(elem.id.replace('animal', ''));
+    elem.classList.add('active');
+    setTimeout(function () {
+        elem.classList.remove('active');
+    }, 1000);
     guess.push(animalIdx);
-
-    if (guess.length === sequence.length) {
-        lose = guess[guess.length - 1] !== sequence[guess.length - 1];
-        isPlaying = lose;
-        if (!lose) {
-            sequence.push(getRandomBetween(0, animals.length - 1));
-            playSequence(function () {
-                guess = [];
-                isPlaying = false;
-            });
-        }
+    if (guess[guess.length - 1] !== sequence[guess.length - 1]) {
+        lose = true;
+        isPlaying = false;
+    } else {
+        sequence.push(getRandomBetween(0, animals.length - 1));
+        playSequence(function () {
+            guess = [];
+            isPlaying = false;
+        });
     }
-   
-    setTimeout(function() {
-        document.getElementById(elemId).classList.remove('active');
-    }, 1000)
-    
     render();
-
 }
 
 function initialize() {
@@ -138,11 +131,13 @@ function render() {
     sequenceCountEl.textContent = sequence.length;
     if (lose) {
         messageEl.textContent = 'Speak again animals!';
+        playBtn.classList.remove('disabled');
     } else if (sequence.length) {
         messageEl.textContent = 'Who spoke when?';
+        playBtn.classList.add('disabled');
     } else {
         messageEl.textContent = 'Click button to begin!';
-        $('button').attr('disabled', false)
+        playBtn.classList.remove('disabled');
     }
 }
 
@@ -155,10 +150,10 @@ function timer() {
         clearInterval(timerId);
         document.querySelector('.timeout span').innerHTML = "";
         document.getElementById('message').innerHTML = "Time's Up! " + sequence.length;
-        $('button').attr('disabled', false)
-
     }
+    render();
 }
+
 initialize();
 
 
