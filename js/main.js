@@ -111,7 +111,7 @@ function handleAnimalClick(evt) {
     if (guess[guess.length - 1] !== sequence[guess.length - 1]) {
         lose = true;
         isPlaying = false;
-    } else {
+    } else if (guess.length === sequence.length) {
         sequence.push(getRandomBetween(0, animals.length - 1));
         playSequence(function () {
             guess = [];
